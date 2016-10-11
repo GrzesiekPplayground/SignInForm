@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 
 namespace SignInForm
 {
@@ -25,7 +26,11 @@ namespace SignInForm
             Person.defaultCity = "Wawszawa"; //change default university to UAM defaultUniversity is STATIC so can be called for Preson (class)
             Person MarianKowalski = new Person("Marian"); //this person will get UAM as it's default
 
-            //advanced methods
+            //inheritance
+            Team Amarena = new Team("Amarena");
+            Amarena.capitan = "Adam Małysz";
+            Amarena.UpdateContact("kontakt@amarena.com", "501010010");
+
 
             Console.ReadKey();
 

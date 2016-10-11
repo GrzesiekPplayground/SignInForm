@@ -15,13 +15,10 @@ namespace SignInForm {
         private string _city = _defaultCity;
         private string _email;
         private string _phone;
-        /*private string _university = _defaultUniversity;
-        private string _fieldOfStudy;
-        private string _department;
-        private string _yearOfStudy;*/
 
         public Person(string name)
         {
+            _name = name;
         }
 
         public int id

@@ -5,14 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using SignInForm;
 
-namespace dotNET_tutorial
+namespace SignInForm
 {
     class Team : Person
     {
         private string _capitan;
         private int _points;
+        private object[] _players = { };
         public Team(string name) : base(name)
         {
+            name = name;
         }
 
         public string capitan
@@ -38,9 +40,21 @@ namespace dotNET_tutorial
                 _points = value;
             }
         }
-        public void GetContact()
+
+        public object[] players
+        {
+            get
+            {
+                return _players;
+            }
+            set
+            {
+                _players = value;
+            }
+        }
+        public new void GetContact()
         {
             Console.WriteLine(String.Format("capita: {0}. name: {1}. e-mail: {2}. phone {3}.", _capitan, name, email, phone));
-        }
+        }        
     }
 }

@@ -43,9 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Person.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="SignInForm.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="AbstractPerson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Team.cs" />
   </ItemGroup>
