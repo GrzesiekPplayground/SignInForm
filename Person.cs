@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Data.OleDb;
 
 namespace SignInForm {
 
@@ -10,18 +12,16 @@ namespace SignInForm {
     {
         private int _id;
         private string _name;
-        private string _surname;
+        private string _city = _defaultCity;
         private string _email;
         private string _phone;
-        private string _university;
+        /*private string _university = _defaultUniversity;
         private string _fieldOfStudy;
         private string _department;
-        private string _yearOfStudy;
+        private string _yearOfStudy;*/
 
-        public Person(string name, string surname)
+        public Person(string name)
         {
-            _name = name;
-            _surname = surname;
         }
 
         public int id
@@ -50,16 +50,15 @@ namespace SignInForm {
             }
         }
 
-        public string surname
+        public string city
         {
             get
             {
-                return _surname;
+                return _city;
             }
-
             set
             {
-                _surname = value;
+                _city = value;
             }
         }
 
@@ -72,6 +71,11 @@ namespace SignInForm {
 
             set
             {
+                if (!(value.Contains("@")))
+                {
+                    throw new ArgumentException(
+                        "Uncorrect email format!");
+                }
                 _email = value;
             }
         }
@@ -89,64 +93,11 @@ namespace SignInForm {
             }
         }
 
-        public string university
+        private static string _defaultCity = "Krakow";
+        public static string defaultCity
         {
-            get
-            {
-                return _university;
-            }
-
-            set
-            {
-                _university = value;
-            }
-        }
-
-        public string fieldOfStudy
-        {
-            get
-            {
-                return _fieldOfStudy;
-            }
-
-            set
-            {
-                _fieldOfStudy = value;
-            }
-        }
-
-        public string department
-        {
-            get
-            {
-                return _department;
-            }
-
-            set
-            {
-                _department = value;
-            }
-        }
-
-        public string yearOfStudy
-        {
-            get
-            {
-                return _yearOfStudy;
-            }
-
-            set
-            {
-                _yearOfStudy = value;
-            }
-        }
-
-        public string fullName
-        {
-            get
-            {
-                return string.Format("{0} {1}", _name, _surname);
-            }
+            get { return _defaultCity; }
+            set { _defaultCity = value; }
         }
 
         public void UpdateContact(string newEmail)
@@ -158,6 +109,18 @@ namespace SignInForm {
         {
             _email = newEmail;
             _phone = newPhone;
+        }
+
+        public void GetBasicInfo(string name, ref string[] basicInfo)
+        {
+            basicInfo[0] = _name;
+            basicInfo[1] = _email;
+            basicInfo[2] = _city;
+        }
+
+        public void GetContact()
+        {
+            Console.WriteLine(String.Format("name: {0}. e-mail: {1}. phone {2}.", _name, _email, _phone));
         }
     }
 }
